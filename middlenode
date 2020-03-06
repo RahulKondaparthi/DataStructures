@@ -1,0 +1,15 @@
+/* Function to find the middle of the linked list */
+void findMiddle(node *head)
+{
+    node *slow_ptr = head;
+    node *fast_ptr = head;
+    if (head!=NULL)
+    {
+        while (fast_ptr != NULL && fast_ptr->link != NULL)
+        {
+            fast_ptr = fast_ptr->link->link;
+            slow_ptr = slow_ptr->link;
+        }
+        printf(" The middle element is %d \n", slow_ptr->data);
+    }
+}
