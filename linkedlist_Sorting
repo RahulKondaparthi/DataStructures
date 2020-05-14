@@ -1,0 +1,33 @@
+void SelectionSort(node *head)
+{
+	node *start = head;
+	node *traverse;
+	node *min;
+	
+	while(start->link)
+	{
+		min = start;
+		traverse = start->link;
+		
+		while(traverse)
+		{
+			/* Find minimum element from array */ 
+			if( min->data > traverse->data )
+			{
+				min = traverse;
+			}
+			
+			traverse = traverse->link;
+		}
+		swap(start,min);			// Put minimum element on starting location
+		start = start->link;
+	}
+} 
+ 
+/* swap data field of linked list */
+void swap(node *p1, node*p2)
+{
+	int temp = p1->data;
+	p1->data = p2->data;
+	p2->data = temp;
+}
