@@ -61,22 +61,44 @@ while (node != NULL)
 } 
 } 
 
+void reversels(struct Node **head_ref)
+{
+    struct Node *prev = NULL;
+    struct Node *current = *head_ref;
+    struct Node *next = NULL;
+    
+    while(current!=NULL)
+    {
+        next= current->next;
+        
+        current->next = prev;
+        prev = current;
+        current = next;
+        
+        
+    }
+    *head_ref = prev;
+}
 /* Driver program to test above functions*/
 int main() 
 { 
 /* Start with the empty list */
-struct Node* head = NULL; 
+struct Node* head = NULL;
+int i;
+for(i=0;i<=97;i++)
+{
+push(&head, i); 
+}
 
-
-push(&head, 7); 
-
-// Insert 1 at the beginning. So linked list becomes 1->7->6->NULL 
-push(&head, 1); 
-
+sleep(10);
 insertafter(head->next, 8);
 insertbefore(head->next,10);
 
+
 printf("\n Created Linked list is: "); 
+printList(head); 
+reversels(&head);
+printf("after revresrsl\n");
 printList(head); 
 
 return 0; 
